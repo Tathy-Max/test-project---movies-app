@@ -19,17 +19,19 @@ export function Home() {
       }
     }
     fetchMovieLists();
-  }, []);
+  }, [movielists]);
   return (
     <>
-      <div className="createList-form">
-        <h1>Create your own movie list here</h1>
+      <div className="mb-5">
+        <h2>Create your own movie list here</h2>
         <Link to="/moviesList">
-          <button className="btn btn-outline-dark btn-lg">Start</button>
+          <button className="btn btn-outline-dark btn large col-4 mx-auto">
+            Start
+          </button>
         </Link>
       </div>
-      <div className="createdLists">
-        <h1>Choose an existent movie list here</h1>
+      <h2>Choose an existent movie list here</h2>
+      <div className="d-flex flex-row flex-wrap">
         {movielists.map((currentList) => {
           return <CardLists name={currentList.name} id={currentList._id} />;
         })}

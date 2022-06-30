@@ -27,8 +27,9 @@ export function Form() {
   }
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <form>
+      <div className="d-flex flex-column m-4">
+        <form className="d-flex flex-column">
+          <h2>Create your list here</h2>
           <label htmlFor="input-name">Name:</label>
           <input
             name="name"
@@ -43,7 +44,11 @@ export function Form() {
             value={form.listTitle}
             type="text"
           />
-          <button type="submit" onClick={handleSubmit}>
+          <button
+            className="btn btn-primary d-grid gap-2"
+            type="submit"
+            onClick={handleSubmit}
+          >
             Create List
           </button>
         </form>

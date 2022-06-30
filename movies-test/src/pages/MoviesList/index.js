@@ -27,7 +27,7 @@ export function MoviesList() {
       <div className="form">
         <Form />
       </div>
-      <div className="cards">
+      <div className="d-flex flex-row flex-wrap">
         {movies.map((currentElement) => {
           return <MovieCard currentElement={currentElement} />;
         })}

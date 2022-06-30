@@ -1,20 +1,45 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import MovieListLogo from "../../assets/pictures/mlLogo.png";
+import { Card, Col, Button } from "antd";
 
 export function CardLists(props) {
+  const { id } = useParams();
+
+  async function handleDelete() {
+    try {
+      await axios.delete(
+        `https://ironrest.herokuapp.com/:tathy-collection/${props.id}`
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
-    <div className="card" style={{ width: "18rem" }}>
+    <Card
+      title={`Movie List of ${props.name}`}
+      style={{ width: 230, height: 300, margin: 10 }}
+    >
       <img
+        style={{ width: 100, height: 60, margin: 10 }}
         className="cardList-logo"
-        src={"../../assets/pictures/mlLogo.png"}
+        src={MovieListLogo}
         alt="movieList-logo"
       />
-      cd
-      <div className="card-body">
-        <h5 className="card-title">{`Movie List de ${props.name}`}</h5>
-        <Link to={`/list/${props.id}`} className="btn btn-primary">
+      <div>
+        <Link
+          to={`/list/${props.id}`}
+          className="btn btn-primary"
+          style={{ margin: 10 }}
+        >
           See List Details
         </Link>
+        <button onClick={handleDelete} className="btn btn-danger" id={props.id}>
+          Delete List
+        </button>
       </div>
-    </div>
+    </Card>
   );
 }
