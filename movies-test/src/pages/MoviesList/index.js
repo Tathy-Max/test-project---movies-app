@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { MovieCard } from "../../components/Card";
 import { Link } from "react-router-dom";
+import { Form } from "../../components/Form";
 
 export function MoviesList() {
   const [movies, setMovies] = useState([{}]);
@@ -23,8 +24,10 @@ export function MoviesList() {
   //   console.log(response);
   return (
     <>
-      <div>
-        <p>TESTANDO</p>
+      <div className="form">
+        <Form />
+      </div>
+      <div className="cards">
         {movies.map((currentElement) => {
           return <MovieCard currentElement={currentElement} />;
         })}

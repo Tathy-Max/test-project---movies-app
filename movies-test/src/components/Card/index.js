@@ -12,9 +12,13 @@ export function MovieCard({ currentElement }) {
           height={120}
           alt="movie-logo"
         />
-        <p>
+        {/* <p>
           <strong>Overview:</strong>
           {currentElement.overview}
+        </p> */}
+        <p>
+          <strong>Release Date:</strong>
+          {currentElement.release_date}
         </p>
         <p>
           <strong>Popularity:</strong>
@@ -27,4 +31,3 @@ export function MovieCard({ currentElement }) {
 }
 
 // {<Link to={`/beers/${currentElement._id}`}> */}
-// {<img src={currentElement.image_url} alt="beer-logo" />
