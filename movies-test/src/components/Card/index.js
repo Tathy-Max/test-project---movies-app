@@ -1,8 +1,17 @@
 import { Card, Col, Button } from "antd";
+import { Toaster, toast } from "react-hot-toast";
 
-export function MovieCard({ currentElement }) {
+export function MovieCard({ currentElement, form, setForm }) {
+  function handleAddMovie(currentElement) {
+    console.log(currentElement);
+    setForm({ ...form, movies: [...form.movies, currentElement] });
+    toast.success(`{currentElement.original_title} was added successfully!`);
+  }
   return (
     <Col>
+      <div>
+        <Toaster />
+      </div>
       <Card
         title={currentElement.title}
         style={{ width: 230, height: 300, margin: 10 }}
@@ -12,10 +21,6 @@ export function MovieCard({ currentElement }) {
           height={120}
           alt="movie-logo"
         />
-        {/* <p>
-          <strong>Overview:</strong>
-          {currentElement.overview}
-        </p> */}
         <p>
           <strong>Release Date:</strong>
           {currentElement.release_date}
@@ -24,10 +29,15 @@ export function MovieCard({ currentElement }) {
           <strong>Popularity:</strong>
           {currentElement.popularity}
         </p>
-        <Button type="primary"> Add Movie </Button>
+        <Button
+          type="primary"
+          onClick={() => {
+            handleAddMovie(currentElement);
+          }}
+        >
+          Add Movie
+        </Button>
       </Card>
     </Col>
   );
 }
-
-// {<Link to={`/beers/${currentElement._id}`}> */}

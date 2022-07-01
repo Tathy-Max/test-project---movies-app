@@ -21,7 +21,7 @@ export function ListDetail() {
       }
     }
     fetchListDetail();
-  }, []);
+  }, [id]);
 
   async function handleDelete() {
     try {
@@ -34,17 +34,39 @@ export function ListDetail() {
       console.log(err);
     }
   }
-
   return (
     <>
-      <h1>{listDetail.name}'s list</h1>
-      <h2>List Title: {listDetail.listTitle}</h2>
-      <ul>
-        <li>Movies</li>
-      </ul>
-      <button onClick={handleDelete} className="btn btn-danger">
-        Delete List
-      </button>
+      <h2>{listDetail.name}'s list</h2>
+      <h5>List Title: {listDetail.listTitle}</h5>
+      <p>MOVIES</p>
+      <div className="d-flex flex-row flex-wrap">
+        {listDetail.movies.map((currentElement) => {
+          return (
+            <>
+              <img
+                src={`https://themoviedb.org/t/p/w220_and_h330_face/.${currentElement.poster_path}`}
+                height={120}
+                alt="movie-logo"
+              />
+              <p>
+                <strong>Title:</strong> {currentElement.original_title}
+              </p>
+              <p>
+                <strong>Overview:</strong> {currentElement.overview}
+              </p>
+              <p>
+                <strong>Vote Average:</strong> {currentElement.vote_average}
+              </p>
+              <p>
+                <strong>Title:</strong> {currentElement.original_title}
+              </p>
+            </>
+          );
+        })}
+        <button onClick={handleDelete} className="btn btn-danger">
+          Delete List
+        </button>
+      </div>
     </>
   );
 }

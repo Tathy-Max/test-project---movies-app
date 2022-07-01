@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import MovieListLogo from "../../assets/pictures/mlLogo.png";
-import { Card, Col, Button } from "antd";
+import { Card } from "antd";
 
 export function CardLists(props) {
   const { id } = useParams();

@@ -1,13 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export function Form() {
-  const [form, setForm] = useState({
-    name: "",
-    listTitle: "",
-    movies: "[{}]",
-  });
-
+export function Form({ form, setForm }) {
   function handleChange(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
   }
