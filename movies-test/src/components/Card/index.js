@@ -5,7 +5,7 @@ export function MovieCard({ currentElement, form, setForm }) {
   function handleAddMovie(currentElement) {
     console.log(currentElement);
     setForm({ ...form, movies: [...form.movies, currentElement] });
-    toast.success(`{currentElement.original_title} was added successfully!`);
+    toast.success("The movie was added successfully!");
   }
   return (
     <Col>

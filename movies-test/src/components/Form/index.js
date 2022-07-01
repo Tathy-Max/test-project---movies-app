@@ -1,7 +1,10 @@
-import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 export function Form({ form, setForm }) {
+  const navigate = useNavigate();
+
   function handleChange(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
   }
@@ -14,13 +17,18 @@ export function Form({ form, setForm }) {
         "https://ironrest.herokuapp.com/:tathy-collection",
         form
       );
-      console.log(sent);
+      toast.success("Your list was created!");
+      // console.log(sent);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   }
   return (
     <>
+      <div>
+        <Toaster />
+      </div>
       <div className="d-flex flex-column m-4">
         <form className="d-flex flex-column">
           <h2>Create your list here</h2>
